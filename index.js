@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
-const rateLimit = require('express-rate-limit');
+const { rateLimit } = require('express-rate-limit');
 const port = 3009;
 
 app.use(express.static('public'));
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 5,
+  limit: 2,
 });
 
 app.use(limiter);
