@@ -10,15 +10,17 @@ const limiter = rateLimit({
   max: 5,
 });
 
-console.log(limiter);
-
 app.use(limiter);
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
+console.log('test heroku');
+
 app.listen(process?.env?.PORT || port, () => {
+  console.log('limiter: ', limiter);
+
   console.log(
     `Server is running on port ${
       process?.env?.PORT || port
